@@ -23,11 +23,11 @@ async def book_hotel(book_input: BookVacationInput)-> str:
     :return
         str: Confirmation message
     """
-    await asyncio.sleep(1)
+    await asyncio.sleep(60)
     attempt_info = f"Invoking activity, attempt number: {activity.info().attempt}"
     if activity.info().attempt < 2:
         activity.heartbeat(attempt_info)
-        await asyncio.sleep(1)
+        await asyncio.sleep(60)
         raise RuntimeError(f"Hotel service is down. Attempt number: {activity.info().attempt}. Retrying...")
 
     if "invalid" in book_input.book_hotel_id:
